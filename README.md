@@ -2,7 +2,7 @@
 
 ## Description
 
-Web application built with Spring Boot for managing books to read, featuring a REST API, user authentication, and more.
+Web application built with Spring Boot for managing books to read, featuring a REST API, user authentication, and more. For study purpose only.
 
 ## Features
 
