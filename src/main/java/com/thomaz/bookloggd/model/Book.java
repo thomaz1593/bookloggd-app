@@ -24,7 +24,7 @@ public class Book {
     @Column(nullable = false)
     private String author;
 
-    //@Column(nullable = false)
+    @Column(nullable = false)
     private String isbn;
 
     @Column(nullable = false)
@@ -45,8 +45,13 @@ public class Book {
     public Book() {
     }
 
-    public Book(String title) {
+    public Book(String title, String author, String isbn, String genre) {
         this.title = title;
+        this.author = author;
+        this.isbn = isbn;
+        this.genre = genre;
+        this.dateAdded = LocalDate.now();
+        this.readingStatus = BookStatus.WANT_TO_READ;
     }
 
     public Long getId() {
