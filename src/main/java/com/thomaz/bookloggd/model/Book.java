@@ -6,10 +6,14 @@ import com.thomaz.bookloggd.enums.BookStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
 
 @Entity
 @Table(name = "book")
@@ -18,15 +22,19 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Título é obrigatório")
     @Column(nullable = false)
     private String title;
 
+    @NotBlank(message = "Autor é obrigatório")
     @Column(nullable = false)
     private String author;
 
+    @Pattern(regexp = "^(?:ISBN(?:-1[03])?:? )?(?=[0-9X]{10}$|(?=(?:[0-9]+[- ]){3})[- 0-9X]{13}$|97[89][0-9]{10}$|(?=(?:[0-9]+[- ]){4})[- 0-9]{17}$)(?:97[89][- ]?)?[0-9]{1,5}[- ]?[0-9]+[- ]?[0-9]+[- ]?[0-9X]$", message = "ISBN deve ter 10 ou 13 dígitos")
     @Column(nullable = false)
     private String isbn;
 
+    @NotBlank(message = "Gênero é obrigatório")
     @Column(nullable = false)
     private String genre;
 
@@ -34,6 +42,7 @@ public class Book {
     private String description;
 
     @Column(name = "reading_status")
+    @Enumerated(EnumType.STRING)
     private BookStatus readingStatus;
 
     @Column(name = "cover_url")
