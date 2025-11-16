@@ -42,7 +42,6 @@ public class BookService {
         existingBook.setDescription(book.getDescription());
         existingBook.setCoverUrl(book.getCoverUrl());
         existingBook.setReadingStatus(book.getReadingStatus());
-        existingBook.setDateAdded(book.getDateAdded());
         return bookRepository.save(existingBook);
     }
 
